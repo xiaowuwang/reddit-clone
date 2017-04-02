@@ -2,7 +2,7 @@ interface ArticleJSON{
   title: string;
   url: string;
   votes: number;
-  publishedAt: string;
+  publishedAt: Date;
   description: string;
   author: string;
   urlToImage: string;
