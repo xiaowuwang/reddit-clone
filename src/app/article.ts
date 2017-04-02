@@ -5,6 +5,7 @@ interface ArticleJSON{
   publishedAt: string;
   description: string;
   author: string;
+  urlToImage: string;
 } 
 
 export class Article {
@@ -15,6 +16,7 @@ export class Article {
     let article = Object.create(Article.prototype);
     return Object.assign(article, json,{
       votes: json.votes? json.votes:0,
+      imageUrl: json.urlToImage,
       publishedAt: json.publishedAt ?
                     new Date(json.publishedAt):
                     new Date()
