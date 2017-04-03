@@ -37,6 +37,12 @@ export class ArticleService {
   private _articles: BehaviorSubject<Article[]>=
     new BehaviorSubject<Article[]>([]);
 
+  private _sources: BehaviorSubject<any> =
+    new BehaviorSubject<any>([]);
+
+  private _refreshSubject: BehaviorSubject<string> = new
+    BehaviorSubject<string>('reddit-r-all');
+
   private _sortByDirectionSubject:
   BehaviorSubject<number>= new
   BehaviorSubject<number>(1);
@@ -49,13 +55,17 @@ export class ArticleService {
   BehaviorSubject<string> = new
   BehaviorSubject<string>('');
 
+
+  public sources: Observable<any> = this._sources.asObservable();
   public articles: Observable<Article[]> = this._articles.asObservable();
 
   public orderedArticles: Observable<Article[]>;
 
   constructor(
     private http: Http
-  ) { 
+  ) {
+    this._refreshSubject
+        .subscribe(this.getArticles.bind(this)); 
     this.orderedArticles =
       Observable.combineLatest(
         this._articles,
@@ -85,22 +95,36 @@ export class ArticleService {
     this._filterbySubject.next(filter);
   }
 
-  public getArticles(): void {
-    this._makeHttpRequest('/v1/articles','reddit-r-all')
+  public updataArticles(sourceKey):void{
+    this._refreshSubject.next(sourceKey);
+  }
+
+  public getArticles(sourceKey='reddit-r-all'): void {
+    this._makeHttpRequest('/v1/articles',sourceKey)
         .map(json=>json.articles)
         .subscribe(articlesJSON=>{
           const articles = articlesJSON
             .map(articlejson=>Article.fromJSON(articlejson));
           this._articles.next(articles);
         })
-}
+  }
+
+  public getSources(): void {
+    this._makeHttpRequest('/v1/sources')
+        .map(json=>json.sources)
+        .filter(list => list.length>0)
+        .subscribe(this._sources);
+  }
+
   private _makeHttpRequest(
     path: string,
-    sourceKey: string
+    sourceKey?: string
   ): Observable<any> {
     let params = new URLSearchParams();
     params.set('apiKey',environment.newsApiKey);
-    params.set('source', sourceKey);
+    if (sourceKey&&sourceKey!==''){
+      params.set('source', sourceKey);
+    }
     return this.http
               .get(`${environment.baseUrl}${path}`,{ search: params })
               .map(resp=> resp.json());
