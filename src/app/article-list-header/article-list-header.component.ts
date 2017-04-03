@@ -37,7 +37,7 @@ export class ArticleListHeaderComponent implements OnInit {
 
   _updateSort(){
     this.articleService
-      .sortby(
+      .sortBy(
         this.currentFilter,
         this.sortDirection
       );

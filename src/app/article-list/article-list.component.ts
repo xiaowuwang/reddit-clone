@@ -23,7 +23,7 @@ export class ArticleListComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(params=>{
       const sourceKey = params['sourceKey'];
-      this.articleService.updataArticles(sourceKey);
+      this.articleService.updateArticles(sourceKey);
     })
   }
 }
