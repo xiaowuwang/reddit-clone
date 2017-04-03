@@ -6,17 +6,84 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import {environment} from '../environments/environment';
 
+interface ArticleSortFn{
+  (a: Article, b: Article): number;
+}
+
+interface ArticleSortOrderFn {
+  (direction: number): ArticleSortFn;
+}
+
+const sortByTime: ArticleSortOrderFn =
+  (direction: number)=>(a: Article, b: Article) => {
+    return direction*
+    (b.publishedAt.getTime()-a.publishedAt.getTime());
+  };
+
+const sortByVotes: ArticleSortOrderFn =
+  (direction: number)=>(a: Article, b: Article) => {
+    return direction*
+    (b.votes-a.votes);
+  };  
+
+const sortFns = {
+  'Time': sortByTime,
+  'Votes': sortByVotes
+};
+
 @Injectable()
 
 export class ArticleService {
   private _articles: BehaviorSubject<Article[]>=
     new BehaviorSubject<Article[]>([]);
 
+  private _sortByDirectionSubject:
+  BehaviorSubject<number>= new
+  BehaviorSubject<number>(1);
+
+  private _sortByFilterSubject:
+  BehaviorSubject<ArticleSortOrderFn>= new
+  BehaviorSubject<ArticleSortOrderFn>(sortByTime);
+
+  private _filterbySubject:
+  BehaviorSubject<string> = new
+  BehaviorSubject<string>('');
+
   public articles: Observable<Article[]> = this._articles.asObservable();
+
+  public orderedArticles: Observable<Article[]>;
 
   constructor(
     private http: Http
-  ) { }
+  ) { 
+    this.orderedArticles =
+      Observable.combineLatest(
+        this._articles,
+        this._sortByFilterSubject,
+        this._sortByDirectionSubject,
+        this._filterbySubject
+      )
+      .map(([
+        articles, sorter, direction, filterStr
+      ])=>{
+        const re = new RegExp(filterStr, 'gi');
+        return articles
+          .filter(a=>re.exec(a.title))
+          .sort(sorter(direction));
+      })
+  }
+
+  public sortby(
+    filter: string,
+    direction: number
+  ): void{
+    this._sortByDirectionSubject.next(direction);
+    this._sortByFilterSubject.next(sortFns[filter]);
+  }
+
+  public filterBy(filter: string){
+    this._filterbySubject.next(filter);
+  }
 
   public getArticles(): void {
     this._makeHttpRequest('/v1/articles','reddit-r-all')
