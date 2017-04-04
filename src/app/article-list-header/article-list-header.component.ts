@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticleService } from "app/article.service";
-
+import { ArticleService } from '../article.service';
 declare var jQuery: any;
 
 @Component({
@@ -9,6 +8,7 @@ declare var jQuery: any;
   styleUrls: ['./article-list-header.component.css']
 })
 export class ArticleListHeaderComponent implements OnInit {
+
   private currentFilter: string = 'Time';
   private sortDirection: number = 1;
 
@@ -16,13 +16,15 @@ export class ArticleListHeaderComponent implements OnInit {
     private articleService: ArticleService
   ) { }
 
-  changeDirection(){
-    this.sortDirection = this.sortDirection*-1;
+  changeDirection() {
+    // update the direction
+    this.sortDirection = this.sortDirection * -1;
     this._updateSort();
   }
 
-  changeSort(filter: string){
-    if (filter=== this.currentFilter){
+  changeSort(filter: string) {
+    // update the filter
+    if (filter === this.currentFilter) {
       this.changeDirection();
     } else {
       this.currentFilter = filter;
@@ -30,17 +32,17 @@ export class ArticleListHeaderComponent implements OnInit {
     }
   }
 
-  liveSearch(evt){
-    const val= evt.target.value;
+  liveSearch(evt) {
+    const val = evt.target.value;
     this.articleService.filterBy(val);
   }
 
-  _updateSort(){
+  _updateSort() {
+    // call sortBy on the article service
     this.articleService
-      .sortBy(
-        this.currentFilter,
-        this.sortDirection
-      );
+        .sortBy(
+          this.currentFilter,
+          this.sortDirection);
   }
 
   ngOnInit() {

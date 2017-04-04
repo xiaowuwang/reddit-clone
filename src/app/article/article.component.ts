@@ -8,13 +8,18 @@ import { Article } from '../article';
 })
 export class ArticleComponent implements OnInit {
   @Input() article: Article;
+
   constructor() { }
-  upvote(){
+
+  upvote() {
     this.article.voteUp();
   }
-  downvote(){
+
+  downvote() {
     this.article.voteDown();
-  }  
+  }
+
   ngOnInit() {
   }
+
 }

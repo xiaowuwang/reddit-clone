@@ -1,28 +1,11 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
+import { TestBed, async } from '@angular/core/testing';
 import { ArticleListHeaderComponent } from './article-list-header.component';
 
-describe('ArticleListHeaderComponent', () => {
-  let component: ArticleListHeaderComponent;
-  let fixture: ComponentFixture<ArticleListHeaderComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ArticleListHeaderComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ArticleListHeaderComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
+describe('Component: ArticleListHeader', () => {
+  it('should create an instance', () => {
+    let component = new ArticleListHeaderComponent();
     expect(component).toBeTruthy();
   });
 });
