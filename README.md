@@ -1,5 +1,7 @@
 # RedditClone
 
+[![Join the chat at https://gitter.im/reddit-clone/Lobby](https://badges.gitter.im/reddit-clone/Lobby.svg)](https://gitter.im/reddit-clone/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
 
 ## Development server
