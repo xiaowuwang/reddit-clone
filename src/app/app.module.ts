@@ -12,6 +12,8 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleService } from './article.service';
 import { ArticleListHeaderComponent } from './article-list-header/article-list-header.component';
 import { AboutComponent } from './about/about.component';
+import {AgmCoreModule} from 'angular2-google-maps/core';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { AboutComponent } from './about/about.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    appRoutes
+    appRoutes,
+    AgmCoreModule.forRoot()
   ],
   providers: [
     ArticleService

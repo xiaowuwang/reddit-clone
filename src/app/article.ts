@@ -13,8 +13,8 @@ export class Article {
 
   // Article.fromJSON()
   static fromJSON(json: ArticleJSON): Article {
-    let article = Object.create(Article.prototype);
-    return Object.assign(article, json, {
+    let article11 = Object.create(Article.prototype);
+    return Object.assign(article11, json, {
       votes: json.votes ? json.votes : 0,
       imageUrl: json.urlToImage,
       publishedAt: json.publishedAt ?
