@@ -41,25 +41,19 @@ const sortFns = {
 
 @Injectable()
 export class ArticleService {
-  private _articles: BehaviorSubject<Article[]> =
-    new BehaviorSubject<Article[]>([]);
-  private _sources: BehaviorSubject<any> =
-    new BehaviorSubject<any>([]);
+  private _articles: BehaviorSubject<Article[]> = new BehaviorSubject<Article[]>([]);
+  private _sources: BehaviorSubject<any> = new BehaviorSubject<any>([]);
 
-  private _refreshSubject: BehaviorSubject<string> = new
-    BehaviorSubject<string>('reddit-r-all');
+  private _refreshSubject: BehaviorSubject<string> = new BehaviorSubject<string>('reddit-r-all');
   private _sortByDirectionSubject: BehaviorSubject<number> = new BehaviorSubject<number>(1);
   private _sortByFilterSubject: BehaviorSubject<ArticleSortOrderFn> = new BehaviorSubject<ArticleSortOrderFn>(sortByTime);
-  private _filterbySubject: BehaviorSubject<string> = new
-  BehaviorSubject<string>('');
+  private _filterbySubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   public sources: Observable<any> = this._sources.asObservable();
   public articles: Observable<Article[]> = this._articles.asObservable();
   public orderedArticles: Observable<Article[]>;
 
-  constructor(
-    private http: Http
-  ) {
+  constructor( private http: Http ) {
     this._refreshSubject
         .subscribe(this.getArticles.bind(this));
 

@@ -1,5 +1,4 @@
-import { Routes, RouterModule } from '@angular/router';
-
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 
@@ -20,4 +19,4 @@ const routes: Routes = [
 ];
 
 export const appRoutes =
-  RouterModule.forRoot(routes);
+  RouterModule.forRoot(routes, { useHash: true, preloadingStrategy: PreloadAllModules })  // .../#/crisis-center/
