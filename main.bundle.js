@@ -117,7 +117,7 @@ var ArticleService = (function () {
         }).map(function (resp) { return resp.json(); });
     };
     ArticleService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(), 
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Injectable */])(), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === 'function' && _a) || Object])
     ], ArticleService);
     return ArticleService;
@@ -403,7 +403,8 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__article_service__ = __webpack_require__(234);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__article_list_header_article_list_header_component__ = __webpack_require__(712);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__about_about_component__ = __webpack_require__(551);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_routes__ = __webpack_require__(711);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_common__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_routes__ = __webpack_require__(711);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -414,6 +415,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -443,10 +445,11 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
-                __WEBPACK_IMPORTED_MODULE_11__app_routes__["a" /* appRoutes */]
+                __WEBPACK_IMPORTED_MODULE_12__app_routes__["a" /* appRoutes */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_8__article_service__["a" /* ArticleService */]
+                __WEBPACK_IMPORTED_MODULE_8__article_service__["a" /* ArticleService */],
+                { provide: __WEBPACK_IMPORTED_MODULE_11__angular_common__["a" /* LocationStrategy */], useClass: __WEBPACK_IMPORTED_MODULE_11__angular_common__["b" /* HashLocationStrategy */] }
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
         }), 
@@ -484,8 +487,6 @@ var routes = [
         component: __WEBPACK_IMPORTED_MODULE_2__article_list_article_list_component__["a" /* ArticleListComponent */]
     }
 ];
-// export const appRoutes =
-//       RouterModule.forRoot(routes, { useHash: true, preloadingStrategy: PreloadAllModules })  // .../#/crisis-center/  
 var appRoutes = __WEBPACK_IMPORTED_MODULE_0__angular_router__["a" /* RouterModule */].forRoot(routes); // .../#/crisis-center/  
 //# sourceMappingURL=C:/Users/steven/Source/Repos/reddit-clone/src/app.routes.js.map
 
@@ -587,7 +588,7 @@ var ArticleComponent = (function () {
     ArticleComponent.prototype.ngOnInit = function () {
     };
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* Input */])(), 
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Input */])(), 
         __metadata('design:type', (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__article__["a" /* Article */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__article__["a" /* Article */]) === 'function' && _a) || Object)
     ], ArticleComponent.prototype, "article", void 0);
     ArticleComponent = __decorate([
