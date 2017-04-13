@@ -72132,10 +72132,10 @@ var SafeResourceUrlImpl = (function (_super) {
 /* unused harmony reexport provideRoutes */
 /* unused harmony reexport RouterOutletMap */
 /* unused harmony reexport NoPreloading */
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["b"]; });
+/* unused harmony reexport PreloadAllModules */
 /* unused harmony reexport PreloadingStrategy */
 /* unused harmony reexport RouterPreloader */
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["c"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["b"]; });
 /* unused harmony reexport ActivatedRouteSnapshot */
 /* unused harmony reexport RouterState */
 /* unused harmony reexport RouterStateSnapshot */
@@ -72759,9 +72759,9 @@ var /** @type {?} */ ROUTER_PROVIDERS = [
     __WEBPACK_IMPORTED_MODULE_11__router_outlet_map__["a" /* RouterOutletMap */],
     { provide: __WEBPACK_IMPORTED_MODULE_13__router_state__["a" /* ActivatedRoute */], useFactory: rootRoute, deps: [__WEBPACK_IMPORTED_MODULE_9__router__["a" /* Router */]] },
     { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["S" /* NgModuleFactoryLoader */], useClass: __WEBPACK_IMPORTED_MODULE_1__angular_core__["U" /* SystemJsNgModuleLoader */] },
-    __WEBPACK_IMPORTED_MODULE_12__router_preloader__["b" /* RouterPreloader */],
-    __WEBPACK_IMPORTED_MODULE_12__router_preloader__["c" /* NoPreloading */],
-    __WEBPACK_IMPORTED_MODULE_12__router_preloader__["a" /* PreloadAllModules */],
+    __WEBPACK_IMPORTED_MODULE_12__router_preloader__["a" /* RouterPreloader */],
+    __WEBPACK_IMPORTED_MODULE_12__router_preloader__["b" /* NoPreloading */],
+    __WEBPACK_IMPORTED_MODULE_12__router_preloader__["c" /* PreloadAllModules */],
     { provide: ROUTER_CONFIGURATION, useValue: { enableTracing: false } },
 ];
 /**
@@ -72863,7 +72863,7 @@ var RouterModule = (function () {
                 {
                     provide: __WEBPACK_IMPORTED_MODULE_12__router_preloader__["d" /* PreloadingStrategy */],
                     useExisting: config && config.preloadingStrategy ? config.preloadingStrategy :
-                        __WEBPACK_IMPORTED_MODULE_12__router_preloader__["c" /* NoPreloading */]
+                        __WEBPACK_IMPORTED_MODULE_12__router_preloader__["b" /* NoPreloading */]
                 },
                 { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["M" /* NgProbeToken */], multi: true, useFactory: routerNgProbeToken },
                 provideRouterInitializer(),
@@ -73048,7 +73048,7 @@ var RouterInitializer = (function () {
      */
     RouterInitializer.prototype.bootstrapListener = function (bootstrappedComponentRef) {
         var /** @type {?} */ opts = this.injector.get(ROUTER_CONFIGURATION);
-        var /** @type {?} */ preloader = this.injector.get(__WEBPACK_IMPORTED_MODULE_12__router_preloader__["b" /* RouterPreloader */]);
+        var /** @type {?} */ preloader = this.injector.get(__WEBPACK_IMPORTED_MODULE_12__router_preloader__["a" /* RouterPreloader */]);
         var /** @type {?} */ router = this.injector.get(__WEBPACK_IMPORTED_MODULE_9__router__["a" /* Router */]);
         var /** @type {?} */ ref = this.injector.get(__WEBPACK_IMPORTED_MODULE_1__angular_core__["K" /* ApplicationRef */]);
         if (bootstrappedComponentRef !== ref.components[0]) {
@@ -73165,9 +73165,9 @@ function provideRouterInitializer() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__router__ = __webpack_require__(150);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__router_config_loader__ = __webpack_require__(151);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return PreloadingStrategy; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PreloadAllModules; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return NoPreloading; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RouterPreloader; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return PreloadAllModules; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return NoPreloading; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RouterPreloader; });
 /**
 *@license
 *Copyright Google Inc. All Rights Reserved.
@@ -91780,11 +91780,11 @@ function compare(path, params, segment) {
 /* unused harmony reexport RouterOutletMap */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__router_preloader__ = __webpack_require__(550);
 /* unused harmony reexport NoPreloading */
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_7__router_preloader__["a"]; });
+/* unused harmony reexport PreloadAllModules */
 /* unused harmony reexport PreloadingStrategy */
 /* unused harmony reexport RouterPreloader */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__router_state__ = __webpack_require__(126);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_8__router_state__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_8__router_state__["a"]; });
 /* unused harmony reexport ActivatedRouteSnapshot */
 /* unused harmony reexport RouterState */
 /* unused harmony reexport RouterStateSnapshot */
