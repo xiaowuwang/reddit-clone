@@ -13,22 +13,7 @@ import { ArticleListHeaderComponent } from './article-list-header/article-list-h
 import { AboutComponent } from './about/about.component';
 import { RouterModule, Routes, PreloadAllModules } from "@angular/router";
 import { LocationStrategy, HashLocationStrategy } from "@angular/common";
-
-const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'news/reddit-r-all',
-    pathMatch: 'full'
-  },
-  {
-    path: 'about',
-    component: AboutComponent
-  },
-  {
-    path: 'news/:sourceKey',
-    component: ArticleListComponent
-  }
-];
+import { appRoutes } from "./app.routes";
 
 @NgModule({
   declarations: [
@@ -43,7 +28,7 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes, { useHash: true, preloadingStrategy: PreloadAllModules })  // .../#/crisis-center/  
+    appRoutes
   ],
   providers: [
     ArticleService,
