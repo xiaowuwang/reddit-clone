@@ -19,5 +19,4 @@ const routes: Routes = [
   }
 ];
 
-export const appRoutes =
-      RouterModule.forRoot(routes, { useHash: true, preloadingStrategy: PreloadAllModules })  // .../#/crisis-center/  
+ export const appRoutes = RouterModule.forRoot(routes)  // .../#/crisis-center/  
